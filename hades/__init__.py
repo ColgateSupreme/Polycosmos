@@ -5,7 +5,8 @@ import settings
 from BaseClasses import Entrance, Item, MultiWorld, Region, Tutorial
 from .Items import event_item_pairs_weapon_mode, item_table, item_table_pacts, HadesItem, event_item_pairs, \
     create_pact_pool_amount, item_table_keepsake, item_table_weapons, item_table_abilities, \
-    item_table_store, item_table_hidden_aspects, item_table_mirror, create_trap_pool, item_name_groups
+    item_table_store, item_table_hidden_aspects, item_table_mirror_1, item_table_mirror_2, item_table_mirror_3, \
+    item_table_mirror_4, mirror_upgrade_items, create_trap_pool, item_name_groups
 from .Locations import setup_location_table_with_settings, give_all_locations_table, HadesLocation, \
     location_table_fates_events, location_name_groups
 from .Options import hades_option_presets, hades_option_groups, HadesOptions
@@ -149,10 +150,37 @@ class HadesWorld(World):
                 pool.append(item)
 
         # Fill mirror items
-        if self.options.mirrorsanity:
-            for upgrade in mirror_upgrades:
-                for _ in range(upgrade.max_level):
-                    item = HadesItem(f"{upgrade.name} Level", self.player)
+        if self.options.mirrorsanity.value >= 1:
+            # Take each tier 1 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
+            for name in item_table_mirror_1.keys():
+                upgradeName = name.split(" Level")[0]
+                max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
+                for _ in range(max_level):
+                    item = HadesItem(name, self.player)
+                    pool.append(item)
+        if self.options.mirrorsanity.value >= 2:
+            # Take each tier 2 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
+            for name in item_table_mirror_2.keys():
+                upgradeName = name.split(" Level")[0]
+                max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
+                for _ in range(max_level):
+                    item = HadesItem(name, self.player)
+                    pool.append(item)
+        if self.options.mirrorsanity.value >= 3:
+            # Take each tier 3 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
+            for name in item_table_mirror_3.keys():
+                upgradeName = name.split(" Level")[0]
+                max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
+                for _ in range(max_level):
+                    item = HadesItem(name, self.player)
+                    pool.append(item)
+        if self.options.mirrorsanity.value == 4:
+            # Take each tier 4 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
+            for name in item_table_mirror_4.keys():
+                upgradeName = name.split(" Level")[0]
+                max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
+                for _ in range(max_level):
+                    item = HadesItem(name, self.player)
                     pool.append(item)
 
         # Pair up our event locations with our event items

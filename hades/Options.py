@@ -114,14 +114,23 @@ class FateSanity(DefaultOnToggle):
     display_name = "FateSanity"
     default = 0
 
-class MirrorSanity(DefaultOnToggle):
+class MirrorSanity(Choice):
     """
     Shuffles upgrades from the Mirror of Night into the item pool, and makes each upgrade
-    level a check. Adds about 150 locations.
+    level a check. Adds about 150 locations on full settings.
+
+    If wanted, can be set to skip later tiers of upgrades, so that only early mirror upgrades are randomized.
+
     The first unlocked option in each mirror pair is automatically equipped. Players 
     can switch between paired upgrades using the normal Mirror of Night interface.
     """
     display_name = "MirrorSanity"
+
+    option_off = 0
+    option_tier_1 = 1
+    option_tiers_1_to_2 = 2
+    option_tiers_1_to_3 = 3
+    option_full = 4
     default = 0
 
 class FishSanity(Choice):
@@ -794,7 +803,7 @@ hades_option_presets: Dict[str, Dict[str, Any]] = {
         "initial_ability": "starting_attack",
         "hidden_aspectsanity": False,
         "fatesanity": False,
-        "mirrorsanity": False,
+        "mirrorsanity": 0,
         "fishsanity": 0,
         "trovesanity": False,
         "heat_system": "reverse_heat",
@@ -834,7 +843,7 @@ hades_option_presets: Dict[str, Dict[str, Any]] = {
         "initial_ability": "starting_attack",
         "hidden_aspectsanity": True,
         "fatesanity": False,
-        "mirrorsanity": True,
+        "mirrorsanity": 3,
         "fishsanity": 1,
         "trovesanity": True,
         "heat_system": "reverse_heat",
@@ -872,7 +881,7 @@ hades_option_presets: Dict[str, Dict[str, Any]] = {
         "initial_ability": "starting_attack",
         "hidden_aspectsanity": True,
         "fatesanity": True,
-        "mirrorsanity": True,
+        "mirrorsanity": 4,
         "fishsanity": 1,
         "trovesanity": True,
         "heat_system": "reverse_heat",
