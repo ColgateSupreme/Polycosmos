@@ -256,7 +256,7 @@ def build_mirror_locations(ri_tier: int, start_id: int) -> dict:
     current_id = start_id
     
     for upgrade in mirror_upgrades:
-        if mirror_ri_requirements.get(upgrade.name, 0) == ri_tier:
+        if mirror_ri_requirements.get(upgrade.name, 0) == 5 - ri_tier:
             for level in range(1, upgrade.max_level + 1):
                 locations[
                     f"Mirror {upgrade.name} - Level {level}"

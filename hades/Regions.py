@@ -149,12 +149,26 @@ def create_regions(ctx, location_database : dict) -> None:
         fates_location.update(location_table_fates)
     ctx.multiworld.regions += [create_region(ctx.multiworld, ctx.player, location_database, "Fated List", 
                                              [location for location in fates_location], ["Exit Fated List"])] 
-    
-    if ctx.options.mirrorsanity:
-        mirror_locations = [location for table in [location_table_mirror_1, location_table_mirror_2, location_table_mirror_3, location_table_mirror_4] for location in table]
+
+    # Ensure mirror table is appropriate for settings before we set locations
+    routine_inspection = 0
+    all_mirror_locations = dict()
+    if ctx.options.heat_system == 2:
+        routine_inspection = ctx.options.routine_inspection_pact_amount
+    if routine_inspection < 1 and ctx.options.mirrorsanity.value == 4:
+        all_mirror_locations.update(location_table_mirror_4)
+    if routine_inspection < 2 and ctx.options.mirrorsanity.value >= 3:
+        all_mirror_locations.update(location_table_mirror_3)
+    if routine_inspection < 3 and ctx.options.mirrorsanity.value >= 2:
+        all_mirror_locations.update(location_table_mirror_2)
+    if routine_inspection < 4 and ctx.options.mirrorsanity.value >= 1:
+        all_mirror_locations.update(location_table_mirror_1)
+    if ctx.options.mirrorsanity.value > 0:
+        mirror_locations = [location for location in all_mirror_locations]
         ctx.multiworld.regions += [create_region(ctx.multiworld, ctx.player, location_database, "Mirror Locations",
                                              mirror_locations,
                                              ["Exit Mirror"])]
+        
     # Ensure fishing table is appropriate for settings before we set locations
     all_fish_locations = dict(location_table_fish)
     if ctx.options.fishsanity.value == 2:

@@ -150,33 +150,36 @@ class HadesWorld(World):
                 pool.append(item)
 
         # Fill mirror items
-        if self.options.mirrorsanity.value >= 1:
+        routine_inspection = 0
+        if self.options.heat_system == "reverse_heat":
+            routine_inspection = self.options.routine_inspection_pact_amount.value
+        if routine_inspection < 4 and self.options.mirrorsanity.value >= 1:
             # Take each tier 1 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
-            for name in item_table_mirror_1.keys():
+            for name, data in item_table_mirror_1.items():
                 upgradeName = name.split(" Level")[0]
                 max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
                 for _ in range(max_level):
                     item = HadesItem(name, self.player)
                     pool.append(item)
-        if self.options.mirrorsanity.value >= 2:
+        if routine_inspection < 3 and self.options.mirrorsanity.value >= 2:
             # Take each tier 2 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
-            for name in item_table_mirror_2.keys():
+            for name, data in item_table_mirror_2.items():
                 upgradeName = name.split(" Level")[0]
                 max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
                 for _ in range(max_level):
                     item = HadesItem(name, self.player)
                     pool.append(item)
-        if self.options.mirrorsanity.value >= 3:
+        if routine_inspection < 2 and self.options.mirrorsanity.value >= 3:
             # Take each tier 3 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
-            for name in item_table_mirror_3.keys():
+            for name, data in item_table_mirror_3.items():
                 upgradeName = name.split(" Level")[0]
                 max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
                 for _ in range(max_level):
                     item = HadesItem(name, self.player)
                     pool.append(item)
-        if self.options.mirrorsanity.value == 4:
+        if routine_inspection < 1 and self.options.mirrorsanity.value == 4:
             # Take each tier 4 upgrade and add it to the pool, with the amount of items being equal to the max level of that upgrade
-            for name in item_table_mirror_4.keys():
+            for name, data in item_table_mirror_4.items():
                 upgradeName = name.split(" Level")[0]
                 max_level = next((upgrade.max_level for upgrade in mirror_upgrade_items if upgrade.name == upgradeName), 0)
                 for _ in range(max_level):

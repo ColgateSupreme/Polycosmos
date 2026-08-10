@@ -163,10 +163,12 @@ class HadesLogic(LogicMixin):
     def _has_all_mirror_talents(self, player: int, option) -> bool:
         if option.mirrorsanity.value == 0:
             return True
-        elif option.mirrorsanity.value == 1:
+        elif option.mirrorsanity.value == 1 and is_mirror_upgrade_enabled("Stubborn Defiance", option):
             return self.has("Stubborn Defiance Level", player)
+        elif is_mirror_upgrade_enabled("Greater Reflex", option) and is_mirror_upgrade_enabled("Ruthless Reflex", option):
+            return self.has("Greater Reflex Level", player) and self.has("Ruthless Reflex Level", player) and self.has("Stubborn Defiance Level", player)
         else:
-            return self.has("Greater Reflex Level", player) and self.has("Ruthless Reflex Level", player) and self.has("Stubborn Defiance Level", player) 
+             return True
         
     def _has_unlocked_troves(self, player: int, option) -> bool:
         if not option.storesanity:
@@ -231,7 +233,7 @@ class HadesLogic(LogicMixin):
         if options.mirrorsanity.value == 0:
             return True
         for upgrade in mirror_upgrade_items:
-             if (5 - mirror_ri_requirements.get(upgrade.name, 0) <= tier) and (options.mirrorsanity.value >= tier):
+             if (is_mirror_upgrade_enabled(upgrade, options)) and (5 - mirror_ri_requirements.get(upgrade.name, 0) <= tier) and (options.mirrorsanity.value >= tier):
                 if self.count(f"{upgrade.name} Level", player) < upgrade.max_level:
                         return False
         return True
@@ -749,25 +751,36 @@ def set_mirror_rules(world: "HadesWorld", player: int, options) -> None:
         required_ri = max(required_ri, 0)
 
         #Grab the location for every level of the mirror upgrade
-        for level in range(1, upgrade.max_level + 1):
-                location_name = f"Mirror {upgrade.name} - Level {level}"
-                location = world.get_location(location_name, player)
+        if is_mirror_upgrade_enabled(upgrade, options):
+                for level in range(1, upgrade.max_level + 1):
+                        location_name = f"Mirror {upgrade.name} - Level {level}"
+                        location = world.get_location(location_name, player)
 
-                # Make sure the player has enough routine inspections to access the mirror upgrade
-                if required_ri > 0:
-                        add_rule(location, lambda state, ri=required_ri: \
-                                state._has_enough_routine_inspection(player, ri, options))
-                # All tier 1 upgrades are pre-meg, tier 2 upgrades are pre-lernie, and tier 3 upgrades are pre-bros. Tier 4 upgrades are post-bros (styx).
-                if mirror_ri_requirements.get(upgrade.name, 0) == 3:
-                        add_rule(location, lambda state: \
-                                 state._has_defeated_boss("Meg Victory", player, options))
-                elif mirror_ri_requirements.get(upgrade.name, 0) == 2:
-                        add_rule(location, lambda state: \
-                                state._has_defeated_boss("Lernie Victory", player, options))
-                elif mirror_ri_requirements.get(upgrade.name, 0) == 1:
-                        add_rule(location, lambda state: \
-                                state._has_defeated_boss("Bros Victory", player, options))
-
+                        # Make sure the player has enough routine inspections to access the mirror upgrade
+                        if required_ri > 0:
+                                add_rule(location, lambda state, ri=required_ri: \
+                                        state._has_enough_routine_inspection(player, ri, options))
+                        # All tier 1 upgrades are pre-meg, tier 2 upgrades are pre-lernie, and tier 3 upgrades are pre-bros. Tier 4 upgrades are post-bros (styx).
+                        if mirror_ri_requirements.get(upgrade.name, 0) == 3:
+                                add_rule(location, lambda state: \
+                                        state._has_defeated_boss("Meg Victory", player, options))
+                        elif mirror_ri_requirements.get(upgrade.name, 0) == 2:
+                                add_rule(location, lambda state: \
+                                        state._has_defeated_boss("Lernie Victory", player, options))
+                        elif mirror_ri_requirements.get(upgrade.name, 0) == 1:
+                                add_rule(location, lambda state: \
+                                        state._has_defeated_boss("Bros Victory", player, options))
+                                
+def is_mirror_upgrade_enabled(upgrade, options) -> bool:
+     tier = mirror_ri_requirements.get(upgrade.name, 0)
+     if options.mirrorsanity.value < 5 - tier:
+          return False
+     if options.heat_system.value == 2:
+          routine_inspection = options.routine_inspection_pact_amount.value
+          if routine_inspection >= tier:
+               return False
+     return True
+     
 
 def set_fishing_rules(world: "HadesWorld", player: int, options) -> None:
 
