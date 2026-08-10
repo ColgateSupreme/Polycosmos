@@ -5,7 +5,7 @@ from .Items import item_table_pacts, item_table_keepsake, items_table_fates_comp
 from worlds.AutoWorld import LogicMixin
 from worlds.generic.Rules import set_rule, add_rule, add_item_rule
 from .Locations import location_weapons_subfixes
-from .Data import mirror_upgrades, mirror_ri_requirements, mirror_upgrade_items
+from .Data import MirrorUpgradeData, mirror_upgrades, mirror_ri_requirements, mirror_upgrade_items
 
 if TYPE_CHECKING:
     from . import HadesWorld
@@ -163,9 +163,9 @@ class HadesLogic(LogicMixin):
     def _has_all_mirror_talents(self, player: int, option) -> bool:
         if option.mirrorsanity.value == 0:
             return True
-        elif option.mirrorsanity.value == 1 and is_mirror_upgrade_enabled("Stubborn Defiance", option):
+        elif option.mirrorsanity.value == 1 and is_mirror_upgrade_enabled(MirrorUpgradeData("Stubborn Defiance",1), option):
             return self.has("Stubborn Defiance Level", player)
-        elif is_mirror_upgrade_enabled("Greater Reflex", option) and is_mirror_upgrade_enabled("Ruthless Reflex", option):
+        elif is_mirror_upgrade_enabled(MirrorUpgradeData("Greater Reflex",1), option) and is_mirror_upgrade_enabled(MirrorUpgradeData("Ruthless Reflex",1), option):
             return self.has("Greater Reflex Level", player) and self.has("Ruthless Reflex Level", player) and self.has("Stubborn Defiance Level", player)
         else:
              return True
