@@ -204,7 +204,7 @@ ModUtil.WrapBaseFunction("SetupHeroObject", function(baseFunc, currentRun, apply
                 NormalizeRequiredFalseTraits(traitData)
                 AddReq(weaponTraits[equippedWeapon].Special)
             end
-			if string.find(traitName, "Ranged") or string.find(traitName, "Cast") or (traitName == "ChaosBlessingAmmoTrait" or traitName == "ChaosCurseAmmoUseDelayTrait" or traitName == "ZeroAmmoBonusTrait") then
+			if string.find(traitName, "Ranged") or string.find(traitName, "Cast") or (traitName == "ChaosBlessingAmmoTrait" or traitName == "ChaosCurseAmmoUseDelayTrait" or traitName == "ZeroAmmoBonusTrait" or traitName == "AmmoReclaimTrait") then
 				NormalizeRequiredFalseTraits(traitData)
 				AddReq("NoCastTrait")
 			end
