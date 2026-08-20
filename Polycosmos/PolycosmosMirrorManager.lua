@@ -398,6 +398,16 @@ ModUtil.Path.Wrap("HandleMetaUpgradeInput", function(baseFunc, screen, button)
 
 			if nextLocationData then
 				CacheMirrorHint(nextLocationData.ClientLocation)
+				local mirrorTooltipLuaValue = 
+				{
+					BaseValue = GetMetaUpgradeStatDelta( upgradeData ),
+					StartingValue = (upgradeData.BaseValue or 0),
+					DisplayValue = (upgradeData.DisplayValue or 0),
+					APPrefix = "Next Archipelago Item: ",
+					HintText = (PolycosmosEvents.GiveItemInLocation(nextLocationData.ClientLocation) or "")
+				}
+				ModifyTextBox({Id = screen.Components["BackingTooltip"..button.ParentIndex].Id,  LuaKey = "TempTextData", LuaValue = mirrorTooltipLuaValue})
+				ModifyTextBox({Id = screen.Components["RightArrowButton"..button.ParentIndex].Id,  LuaKey = "TempTextData", LuaValue = mirrorTooltipLuaValue})
 				StyxScribe.Send(styx_scribe_send_prefix.."Locations hinted:"..mirrorHintsCache)
 				mirrorHintsCache = ""
 			end
@@ -617,6 +627,7 @@ ModUtil.Path.Wrap("CreateMetaUpgradeEntry", function(baseFunc, args)
 			args.Screen.RightArrowOffsetX = oldOffsetX
 		else
 			local button = CreateArrowButton( k, { Screen = args.Screen, Data = upgradeData, IsIncrease = true, IsEnabled = true })
+			button.LuaValue = 	{ BaseValue = GetMetaUpgradeStatDelta( upgradeData ), StartingValue = (upgradeData.BaseValue or 0), DisplayValue = (upgradeData.DisplayValue or 0), APPrefix = "Next Archipelago Item: ", HintText = (PolycosmosEvents.GiveItemInLocation(PolycosmosMirrorManager.GetNextLocationData(upgradeName).ClientLocation) or "") }
 			button.ResourceName = args.Screen.ResourceName
 			if args.Swap then
 				components[itemBackingKey.."Swap"] = CreateScreenComponent({ Name = "ExchangeMetaupgrade", Scale = 1.0, Group = "Combat_Menu" })
@@ -668,6 +679,8 @@ ModUtil.Path.Wrap("CreateMetaUpgradeEntry", function(baseFunc, args)
 				hoverButton.Index = k
 				hoverButton.Name = upgradeName
 			else
+				--upgradeData = MetaUpgradeData["AmmoMetaUpgrade"]
+				--upgradeData.Name = "HealthMetaUpgrade"
 				CreateTooltipTarget( args.Screen, k, upgradeData )
 			end
 			args.Screen.RightArrowOffsetX = oldOffsetX
@@ -677,6 +690,17 @@ ModUtil.Path.Wrap("CreateMetaUpgradeEntry", function(baseFunc, args)
 	local locationData = PolycosmosMirrorManager.GetNextLocationData(upgradeName)
 	if locationData then
 		CacheMirrorHint(locationData.ClientLocation)
+		-- add the hinted location to the tooltip for the mirror upgrade
+		local mirrorTooltipLuaValue = 
+		{
+			BaseValue = GetMetaUpgradeStatDelta( upgradeData ),
+			StartingValue = (upgradeData.BaseValue or 0),
+			DisplayValue = (upgradeData.DisplayValue or 0),
+			APPrefix = "Next Archipelago Item: ",
+			HintText = (PolycosmosEvents.GiveItemInLocation(locationData.ClientLocation) or "")
+		}
+		ModifyTextBox({Id = components["BackingTooltip"..k].Id,  LuaKey = "TempTextData", LuaValue = mirrorTooltipLuaValue})
+		ModifyTextBox({Id = components["RightArrowButton"..k].Id,  LuaKey = "TempTextData", LuaValue = mirrorTooltipLuaValue})
 		StyxScribe.Send(styx_scribe_send_prefix.."Locations hinted:"..mirrorHintsCache)
 		mirrorHintsCache = ""
 	end
@@ -750,4 +774,22 @@ ModUtil.Path.Wrap("UpdateButtonStates", function(baseFunc, screen)
 			end
 		end
 	end
+end)
+
+-- the tooltips we added will make the boon tray screen ugly, so we need to assign empty lua values when it tries to generate tooltips
+ModUtil.Path.Wrap("SetupMetaIconTrayTooltip", function(baseFunc, button, upgradeName, upgradeData, offsetX, args )
+	baseFunc( button, upgradeName, upgradeData, offsetX, args )
+	local mirrorTooltipLuaValue = 
+	{
+		Amount = 1,
+		BaseValue = GetMetaUpgradeStatDelta( upgradeData ),
+		StartingValue = (upgradeData.BaseValue or 0),
+		CurrentValue = currentValue,
+		DisplayValue = (upgradeData.DisplayValue or 0)
+	}
+	if MirrorUpgradeTable[PolycosmosMirrorManager.InternalToClient[upgradeData.Name]] then
+		mirrorTooltipLuaValue.HintText = ""
+		mirrorTooltipLuaValue.APPrefix = ""
+	end
+	ModifyTextBox({Id = button.Id,  LuaKey = "TempTextData", LuaValue = mirrorTooltipLuaValue})
 end)

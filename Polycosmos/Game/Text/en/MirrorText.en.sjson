@@ -1,0 +1,83 @@
+{
+    Texts = [
+        "_search", [
+            { Id = "SneakAttack" }
+            { Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage when striking foes from behind, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "AlphaAttack" }
+            { Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage when striking undamaged foes, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "DoorHeal" }
+            { Description = "Restore a small amount of your {!Icons.Health_Small} when you exit a chamber, {#TooltipUpgradeFormat}+{$TempTextData.BaseValue} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "DarknessHeal" }
+            { Description = "Restore some of your {!Icons.Health_Small} when you collect {!Icons.MetaPoint_Small}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat} of the collected amount per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "ExtraChance" }
+            { Description = "Restore {#TooltipBoldFormat}50%{!Icons.Health_Small} {#PreviousFormat}instead of dying when your Life Total is depleted, {#TooltipUpgradeFormat}1 {#PreviousFormat}time per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "ExtraChanceChaos" }
+            { Description = "Restore {#TooltipBoldFormat}50%{!Icons.Health_Small} {#PreviousFormat}instead of dying when your Life Total is depleted, {#TooltipUpgradeFormat}1 {#PreviousFormat}time per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "ExtraChanceReplenish" }
+            { Description = "Restore {#TooltipBoldFormat}30%{!Icons.Health_Small} {#PreviousFormat}instead of dying when your Life Total is depleted, {#TooltipUpgradeFormat}1 {#PreviousFormat}time {#ItalicFormat}per chamber. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "ExtraChanceAlt" }
+            { Description = "Restore at least {#TooltipBoldFormat}30%{!Icons.Health_Small} {#PreviousFormat}when your Life Total is depleted, {#TooltipUpgradeFormat}1 {#PreviousFormat}time {#ItalicFormat}per chamber. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "DashCharges" }
+            { Description = "Perform {#TooltipUpgradeFormat}+1 {#PreviousFormat} additional {#BoldFormatGraft}Dash {#PreviousFormat} in quick succession. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "PerfectDash" }
+            { Description = "Gain {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}damage and dodge chance for {#BoldFormatGraft}{$TempTextData.DisplayValue} Sec. {#PreviousFormat}when you {#BoldFormatGraft}Dash {#PreviousFormat}just before getting hit. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "AmmoVulnerability" }
+            { Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage to foes with{!Icons.Ammo}in them, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "StoredAmmoSlow" }
+            { Description = "Reduce move speed and damage of foes with{!Icons.Ammo}in them, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "AmmoSupply" }
+            { Description = "Raise your supply of {!Icons.Ammo} for your {#BoldFormatGraft}Cast{#PreviousFormat}, {#TooltipUpgradeFormat}+1 {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "AmmoReload" }
+            { Description = "Regenerate your {!Icons.Ammo} for your {#BoldFormatGraft}Cast {#PreviousFormat}{#ItalicFormat}(rather than pick it up){#PreviousFormat}, faster by {#TooltipUpgradeFormat}{$TempTextData.BaseValue} Sec. {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "StartingMoney" }
+            { Description = "Start each escape attempt from the House of Hades with some wealth, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}{!Icons.Currency_Small} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "InterestMoney" }
+            { Description = "Gain wealth when you clear an Underworld region, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}of your current {!Icons.Currency_Small} per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "StartingHealth" }
+            { Description = "Raise your Life Total, {#TooltipUpgradeFormat}+{$TempTextData.BaseValue}{!Icons.HealthUp_Small} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "HighHealthDamage" }
+            { Description = "Deal bonus damage while your Life Total is at {#BoldFormatGraft}{$TempTextData.DisplayValue}%{#PreviousFormat}{!Icons.Health_Small} or above, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}damage per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "EffectVulnerability" }
+            { Description = "Deal bonus damage vs. foes afflicted by at least {#BoldFormatGraft}2 {#PreviousFormat} {#ItalicFormat}{$Keywords.Status} {#PreviousFormat}effects, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "GodEnhancement" }
+            { Description = "Deal bonus damage for each Olympian whose {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}you have, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "RareBoonChance" }
+            { Description = "Raise your chance for a {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}to be {#RareFormat}{$Keywords.Rare}{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "RunRewardBonusChance" }
+            { Description = "Raise your chance for {!Icons.GoldLaurel} rewards, including {!Icons.LootSmall}, {!Icons.HammerSmall}, {!Icons.Currency_Small}, and {!Icons.PomSmall}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "EpicBoonChance" }
+            { Description = "Raise your chance for a {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}to be {#EpicFormat}{$Keywords.Epic}{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "DuoRarityBoonChance" }
+            { Description = "Raise your chance for a {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}or {#DuoFormat}{$Keywords.Duo} {#PreviousFormat}{#ItalicFormat}(if possible){#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "Reroll" }
+            { Description = "Randomly alter the reward for the next chamber, {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} total chances per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            { Id = "RerollPanel" }
+            { Description = "Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}{#PreviousFormat}{!Icons.ReRoll_Small} chance per rank {#ItalicFormat}(at a time){#PreviousFormat}. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+        ]
+    ]
+}

@@ -647,7 +647,11 @@ function PolycosmosEvents.SetUpGameWithData()
     end
 
     if (GameState.TrovesCompleted ~= nil and GameState.TrovesCompleted ~= {}) then
-        StyxScribe.Send(styx_scribe_send_prefix.."Troves Completed-"..GameState.TrovesCompleted)
+        local totalCount = 0
+        for _, count in pairs(GameState.TrovesCompleted) do
+            totalCount = totalCount + count
+        end
+        StyxScribe.Send(styx_scribe_send_prefix.."Troves Completed-"..totalCount)
     end
 
     if (GameState.MetaUpgrades["BiomeSpeedShrineUpgrade"] == 0 and CurrentRun ~= nil) then

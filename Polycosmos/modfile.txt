@@ -40,6 +40,9 @@ SJSON "Game/Animations/ObstacleAnimations.sjson"
 To "Game/GUI/MainMenuScreen.sjson"
 SJSON "Game/GUI/MainMenuScreen.sjson"
 
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Game/Text/en/MirrorText.en.sjson"
+
 To "Game/Text/en/PatchNotes.en.sjson"
 SJSON "Game/Text/en/PatchNotes.en.sjson"
 

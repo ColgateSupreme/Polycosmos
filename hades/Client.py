@@ -89,7 +89,7 @@ class HadesContext(CommonContext):
         
         subsume.AddHook(self.on_run_status_notification, styx_scribe_recieve_prefix + "On Run", "HadesClient")
         subsume.AddHook(self.on_house_of_hades_notification, styx_scribe_recieve_prefix + "On House", "HadesClient")
-        subsume.AddHook(self.trove_completed_notification,  styx_scribe_recieve_prefix + "Troves Completed-", "HadesClient")
+        #subsume.AddHook(self.trove_completed_notification,  styx_scribe_recieve_prefix + "Troves Completed-", "HadesClient")
 
     async def server_auth(self, password_requested: bool = False) -> None:
         # This is called to autentificate with the server.
@@ -387,10 +387,11 @@ class HadesContext(CommonContext):
             await self.send_msgs(message)
 
     async def trove_completed_notification(self, total_count : str):
+        print(f"TROVE CALLBACK RECEIVED: [{total_count!r}]")
         message = [{"cmd": "Set",
                     "key": f"Hades_{self.team}_{self.slot}_TrovesCompleted",
                     "default": 0,
-                    "operations": {"operation": "replace", "value": int(total_count)}}]
+                    "operations": {"operation": "replace", "value": total_count}}]
 
         if self.server and self.server.socket:
             await self.send_msgs(message)
