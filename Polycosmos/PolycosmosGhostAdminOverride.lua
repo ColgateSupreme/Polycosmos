@@ -30,17 +30,45 @@ function PolycosmosGhostAdminOverride.GiveItemTitle(displayName)
 		if (GameState.ClientGameSettings["WeaponSanity"]==0) then
 			return displayName
 		else
-			return PolycosmosGhostAdminOverride.GiveAPItemAtLocation(displayName.." Location")
+			return displayName
 		end
 	elseif (PolycosmosCosmeticsManager.GiveCosmeticLocationData(displayName) ~= nil) then
 		if (GameState.ClientGameSettings["StoreSanity"]==0) then
 			return displayName
 		else
-			return PolycosmosGhostAdminOverride.GiveAPItemAtLocation(PolycosmosCosmeticsManager.GiveCosmeticLocationData(displayName).ClientNameLocation)
+			return displayName
 		end
 	else
 		return displayName
 	end
+end
+
+
+------------------------------------------------------
+
+function PolycosmosGhostAdminOverride.GiveItemDescription(displayName)
+	local prefix = ""
+	local item = ""
+	if not GameState.ClientDataIsLoaded then
+		item = "Polycosmos data not loaded. Connect to server before opening this menu."
+	end
+		
+	if (PolycosmosWeaponManager.IsWeaponLocation(displayName.." Location") == true) then
+		if not (GameState.ClientGameSettings["WeaponSanity"]==0) then
+			prefix = "Archipelago Item: "
+			item = PolycosmosGhostAdminOverride.GiveAPItemAtLocation(displayName.." Location")
+		end
+	elseif (PolycosmosCosmeticsManager.GiveCosmeticLocationData(displayName) ~= nil) then
+		if not (GameState.ClientGameSettings["StoreSanity"]==0) then
+			prefix = "Archipelago Item: "
+			item = PolycosmosGhostAdminOverride.GiveAPItemAtLocation(PolycosmosCosmeticsManager.GiveCosmeticLocationData(displayName).ClientNameLocation)
+		end
+	end
+	local luaValueDescription = {
+		APPrefix = prefix,
+		HintText = item
+	}
+	return luaValueDescription
 end
 
 
@@ -194,6 +222,7 @@ function PolycosmosGhostAdminOverride.DisplayCosmeticsOverride( screen, slotName
 		-------------------------------------------------
 
 		Title = PolycosmosGhostAdminOverride.GiveItemTitle(displayName)
+		Description = PolycosmosGhostAdminOverride.GiveItemDescription(displayName)
 		PolycosmosGhostAdminOverride.CacheCosmeticHint(displayName)
 
 		-------------------------------------------------
@@ -251,6 +280,7 @@ function PolycosmosGhostAdminOverride.DisplayCosmeticsOverride( screen, slotName
 				OpacityWithOwner = true,
 			},
 		}, LocalizationData.GhostAdminScreen.CosmeticDescription))
+		ModifyTextBox({Id = components[purchaseButtonKey].Id, LuaKey = "TempTextData", LuaValue = Description})
 
 		components[purchaseButtonKey].OnPressedFunctionName = "HandleGhostAdminPurchase"
 		if not firstUseable then
@@ -334,6 +364,7 @@ function PolycosmosGhostAdminOverride.DisplayCosmeticsOverride( screen, slotName
 		-------------------------------------------------
 
 		Title = PolycosmosGhostAdminOverride.GiveItemTitle(displayName)
+		Description = PolycosmosGhostAdminOverride.GiveItemDescription(displayName)
 
 		-------------------------------------------------
 		-------------------THIS ENDS THE NEW BIT TO SHOW DIFFERENT ITEMS FOR AP
@@ -392,6 +423,7 @@ function PolycosmosGhostAdminOverride.DisplayCosmeticsOverride( screen, slotName
 				OpacityWithOwner = true,
 			},
 		}, LocalizationData.GhostAdminScreen.CosmeticDescription))
+		ModifyTextBox({Id = components[purchaseButtonKey].Id, LuaKey = "TempTextData", LuaValue = Description})
 
 		if not firstUseable then
 			TeleportCursor({ OffsetX = itemLocationX, OffsetY = itemLocationY, ForceUseCheck = true })

@@ -1,6 +1,7 @@
 {
     Texts = [
         "_search", [
+            // *MIRROR UPGRADES*
             { Id = "SneakAttack" }
             { Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage when striking foes from behind, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
 
@@ -78,6 +79,73 @@
 
             { Id = "RerollPanel" }
             { Description = "Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}{#PreviousFormat}{!Icons.ReRoll_Small} chance per rank {#ItalicFormat}(at a time){#PreviousFormat}. \n {#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}" }
+
+            // *COSMETIC ITEMS*
+            { Id = "HealthFountainHeal1" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: {$Keywords.FountainPlural} provide {#AltUpgradeFormat}+10% {#PreviousFormat}more {!Icons.HealthRestore_Small} than usual." }
+
+            { Id = "HealthFountainHeal2" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: {$Keywords.FountainPlural} provide {#AltUpgradeFormat}+20% {#PreviousFormat}more {!Icons.HealthRestore_Small} than usual." }
+
+            { Id = "TartarusReprieve" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{!Icons.SpecialOffer} {$Keywords.NewChamber}: Restores some {!Icons.HealthHome_Small} amid the gloom." }
+
+            { Id = "AsphodelReprieve" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.NewChamber}: Restores some {!Icons.HealthHome_Small} amid the searing heat." }
+
+            { Id = "ElysiumReprieve" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.NewChamber}: Restores some {!Icons.HealthHome_Small} amid the lush environs." }
+
+            { Id = "ChallengeSwitches1" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Chambers may contain an {$Keywords.ChallengeSwitch}." }
+
+            { Id = "ChallengeSwitches2" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Each {$Keywords.ChallengeSwitch} contains more." }
+
+            { Id = "ChallengeSwitches3" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Each {$Keywords.ChallengeSwitch} contains even more." }
+
+            { Id = "BreakableValue1" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Chambers may contain urns with {#AltUpgradeFormat}5{#PreviousFormat}{!Icons.Currency_Small}." }
+
+            { Id = "BreakableValue2" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Chambers may contain urns with {#AltUpgradeFormat}10{#PreviousFormat}{!Icons.Currency_Small}." }
+
+            { Id = "BreakableValue3" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Chambers may contain urns with {#AltUpgradeFormat}15{#PreviousFormat}{!Icons.Currency_Small}." }
+
+            { Id = "PostBossGiftRack" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Switch {$Keywords.Keepsakes} between Underworld regions." }
+
+            { Id = "RoomRewardMetaPointDropRunProgress" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Claiming {!Icons.MetaPoint_Small} chamber rewards gives you {#AltUpgradeFormat}+5{#PreviousFormat}{!Icons.HealthUp_Small}." }
+
+            { Id = "LockKeyDropRunProgress" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Claiming {!Icons.LockKeySmall} chamber rewards gives you {#AltUpgradeFormat}+1{#PreviousFormat}{!Icons.ReRollAlt_Small}." }
+
+            { Id = "GemDropRunProgress" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Claiming {!Icons.GemSmall} chamber rewards gives you {#AltUpgradeFormat}+20{#PreviousFormat}{!Icons.Currency_Small}." }
+
+            { Id = "GiftDropRunProgress" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Claiming {!Icons.GiftPointSmall} chamber rewards gives you {#AltUpgradeFormat}+1 Lv.{!Icons.RandomPomSmall} {#PreviousFormat}." }
+
+            { Id = "UnusedWeaponBonusAddGems" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Your weapons' {#BoldFormatGraft}Dark Thirst {#PreviousFormat}also gives {#AltUpgradeFormat}+20% {#PreviousFormat}{!Icons.GemSmall}." }
+
+            { Id = "BossAddGems" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.RunUpgrade}: Awards {!Icons.GemSmall} after vanquishing Underworld Bosses." }
+
+            { Id = "FishingUnlockItem" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.NewSystem}: Scoop creatures from the Underworld's rivers..." }
+
+            { Id = "GhostAdminDesk" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.NewSystem}: Give the {#BoldFormatGraft}House Contractor {#PreviousFormat}a break {#ItalicFormat}(and new jobs...){#PreviousFormat}" }
+
+            { Id = "OrpheusUnlockItem" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.KeyItem}: Free {$Keywords.Orpheus} from solitary confinement." }
+
+            { Id = "Cosmetic_MusicPlayer" }
+            { Description = "{#ItalicFormat}{$TempTextData.APPrefix}{#PreviousFormat}{#BoldFormatGraft}{$TempTextData.HintText}{#PreviousFormat}\n{$Keywords.NewSystem}: Authorizes playback of music pieces from the vault." }
         ]
     ]
 }
